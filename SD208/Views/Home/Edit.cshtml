@@ -1,0 +1,98 @@
+﻿
+@{
+    ViewBag.Title = "Update";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var user = (IEnumerable<user>)ViewData["User"];
+}
+<style>
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #ccd9cf;
+        color: #495057;
+        margin: 0;
+        padding: 0;
+    }
+
+        h2 {
+            text-align: center;
+            margin-top: 30px;
+            color: #007bff;
+        }
+
+        form {
+            width: 50%;
+            margin: auto;
+            background-color: #ffffff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 20px;
+            border: 2px solid;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: black;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            box-sizing: border-box;
+            border: 1px solid #ced4da;
+            border-radius: 4px;
+        }
+
+    button {
+        display: block;
+        width: 100%;
+        padding: 10px;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+        button:hover {
+            background-color: #007bff;
+        }
+    </style>
+<br />
+
+<h2> </h2>
+
+@{
+    foreach (var use in user)
+    {
+        <BR /> <BR /> <BR /> <BR /> <BR />
+        <center>
+            <form action="Update" method="post">
+                <div class="mb-5">
+                    <input type="hidden" name="id" value="@use.userID" />
+                    <label for="firstname" class="form-label">Firstname:</label>
+                    <input type="text" class="form-control" id="firstname" name="new_firstname" value="@use.firstname" required>
+                </div>
+                <div class="mb-5">
+                    <label for="lastname" class="form-label">Lastname:</label>
+                    <input type="text" class="form-control" id="lastname" name="new_lastname" value="@use.lastname" required>
+                </div>
+                <div class="mb-5">
+                    <label for="email" class="form-label">Email:</label>
+                    <input type="email" class="form-control" id="email" name="new_email" value="@use.email" required>
+                </div>
+                <div class="mb-5">
+                    <label for="password" class="form-label">Password:</label>
+                    <input type="password" class="form-control" id="password" name="new_password" value="@use.password" required>
+                </div>
+                <br />
+                <button type="submit" class="btn btn-primary">Save</button>
+            </form>
+        </center>
+    }
+}
+
